@@ -1,0 +1,873 @@
+================================================================================
+DATASET DIMENSIONS
+================================================================================
+Train shape: (8789, 38)
+Test shape: (1, 38)
+
+Memory usage:
+  Train: 13.56 MB
+  Test: 0.00 MB
+
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 8789 entries, 0 to 8788
+Data columns (total 38 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   lab_id              8789 non-null   object 
+ 1   video_id            8789 non-null   int64  
+ 2   mouse1_strain       8789 non-null   object 
+ 3   mouse1_color        8789 non-null   object 
+ 4   mouse1_sex          8779 non-null   object 
+ 5   mouse1_id           816 non-null    float64
+ 6   mouse1_age          8140 non-null   object 
+ 7   mouse1_condition    8229 non-null   object 
+ 8   mouse2_strain       8789 non-null   object 
+ 9   mouse2_color        8789 non-null   object 
+ 10  mouse2_sex          8742 non-null   object 
+ 11  mouse2_id           108 non-null    float64
+ 12  mouse2_age          8140 non-null   object 
+ 13  mouse2_condition    7991 non-null   object 
+ 14  mouse3_strain       7943 non-null   object 
+ 15  mouse3_color        7943 non-null   object 
+ 16  mouse3_sex          7943 non-null   object 
+ 17  mouse3_id           17 non-null     float64
+ 18  mouse3_age          7943 non-null   object 
+ 19  mouse3_condition    7933 non-null   object 
+ 20  mouse4_strain       10 non-null     object 
+ 21  mouse4_color        10 non-null     object 
+ 22  mouse4_sex          10 non-null     object 
+ 23  mouse4_id           10 non-null     float64
+ 24  mouse4_age          11 non-null     object 
+ 25  mouse4_condition    3 non-null      object 
+ 26  frames_per_second   8789 non-null   float64
+ 27  video_duration_sec  8789 non-null   float64
+ 28  pix_per_cm_approx   8789 non-null   float64
+ 29  video_width_pix     8789 non-null   int64  
+ 30  video_height_pix    8789 non-null   int64  
+ 31  arena_width_cm      8789 non-null   float64
+ 32  arena_height_cm     8789 non-null   float64
+ 33  arena_shape         8789 non-null   object 
+ 34  arena_type          8779 non-null   object 
+ 35  body_parts_tracked  8789 non-null   object 
+ 36  behaviors_labeled   848 non-null    object 
+ 37  tracking_method     8789 non-null   object 
+dtypes: float64(9), int64(3), object(26)
+memory usage: 2.5+ MB
+
+
+
+video_id	mouse1_id	mouse2_id	mouse3_id	mouse4_id	frames_per_second	video_duration_sec	pix_per_cm_approx	video_width_pix	video_height_pix	arena_width_cm	arena_height_cm
+count	8.789000e+03	816.000000	108.000000	17.000000	10.000000	8789.000000	8789.000000	8789.000000	8789.000000	8789.000000	8789.000000	8789.000000
+mean	1.072697e+09	24.571078	19.518519	35.588235	48.400000	30.402648	134.647855	12.440189	813.654227	790.369667	50.457856	49.299670
+std	6.209820e+08	22.444201	11.660687	4.542285	2.951459	6.434061	637.123844	3.405194	109.410878	133.869821	7.580842	10.705873
+min	9.603000e+03	1.000000	1.000000	29.000000	44.000000	10.000000	19.000000	5.500000	300.000000	194.000000	12.700000	12.000000
+25%	5.380940e+08	6.000000	12.000000	32.000000	46.250000	30.000000	60.000000	11.700000	800.000000	800.000000	52.000000	52.000000
+50%	1.072003e+09	15.000000	17.000000	35.000000	48.000000	30.000000	60.000000	11.700000	800.000000	800.000000	52.000000	52.000000
+75%	1.615401e+09	38.000000	24.250000	39.000000	51.000000	30.000000	60.000000	11.700000	800.000000	800.000000	52.000000	52.000000
+max	2.147479e+09	80.000000	53.000000	42.000000	52.000000	120.020000	19801.000000	65.000000	2048.000000	2056.000000	120.000000	120.000000
+
+
+lab_id	video_id	mouse1_strain	mouse1_color	mouse1_sex	mouse1_id	mouse1_age	mouse1_condition	mouse2_strain	mouse2_color	...	pix_per_cm_approx	video_width_pix	video_height_pix	arena_width_cm	arena_height_cm	arena_shape	arena_type	body_parts_tracked	behaviors_labeled	tracking_method
+0	AdaptableSnail	44566106	CD-1 (ICR)	white	male	10.0	8-12 weeks	wireless device	CD-1 (ICR)	white	...	16.0	1228	1068	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "head...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+1	AdaptableSnail	143861384	CD-1 (ICR)	white	male	3.0	8-12 weeks	NaN	CD-1 (ICR)	white	...	9.7	968	608	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "late...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+2	AdaptableSnail	209576908	CD-1 (ICR)	white	male	7.0	8-12 weeks	NaN	CD-1 (ICR)	white	...	16.0	1266	1100	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "late...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+3	AdaptableSnail	278643799	CD-1 (ICR)	white	male	11.0	8-12 weeks	wireless device	CD-1 (ICR)	white	...	16.0	1224	1100	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "head...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+4	AdaptableSnail	351967631	CD-1 (ICR)	white	male	14.0	8-12 weeks	NaN	CD-1 (ICR)	white	...	16.0	1204	1068	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "late...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+
+
+
+
+
+Column	Missing_Count	Missing_Pct	Data_Type
+25	mouse4_condition	8786	99.97	object
+21	mouse4_color	8779	99.89	object
+22	mouse4_sex	8779	99.89	object
+20	mouse4_strain	8779	99.89	object
+23	mouse4_id	8779	99.89	float64
+24	mouse4_age	8778	99.87	object
+17	mouse3_id	8772	99.81	float64
+11	mouse2_id	8681	98.77	float64
+5	mouse1_id	7973	90.72	float64
+36	behaviors_labeled	7941	90.35	object
+19	mouse3_condition	856	9.74	object
+15	mouse3_color	846	9.63	object
+14	mouse3_strain	846	9.63	object
+16	mouse3_sex	846	9.63	object
+18	mouse3_age	846	9.63	object
+13	mouse2_condition	798	9.08	object
+12	mouse2_age	649	7.38	object
+6	mouse1_age	649	7.38	object
+7	mouse1_condition	560	6.37	object
+10	mouse2_sex	47	0.53	object
+4	mouse1_sex	10	0.11	object
+34	arena_type	10	0.11	object
+
+
+
+
+📁 Figures will be saved to: /home/mingjia-guan/workspaces/MABe-2025/eda/figures
+================================================================================
+DATASET DIMENSIONS
+================================================================================
+Train shape: (8789, 38)
+Test shape: (1, 38)
+
+Memory usage:
+  Train: 13.56 MB
+  Test: 0.00 MB
+lab_id	video_id	mouse1_strain	mouse1_color	mouse1_sex	mouse1_id	mouse1_age	mouse1_condition	mouse2_strain	mouse2_color	...	pix_per_cm_approx	video_width_pix	video_height_pix	arena_width_cm	arena_height_cm	arena_shape	arena_type	body_parts_tracked	behaviors_labeled	tracking_method
+0	AdaptableSnail	44566106	CD-1 (ICR)	white	male	10.0	8-12 weeks	wireless device	CD-1 (ICR)	white	...	16.0	1228	1068	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "head...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+1	AdaptableSnail	143861384	CD-1 (ICR)	white	male	3.0	8-12 weeks	NaN	CD-1 (ICR)	white	...	9.7	968	608	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "late...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+2	AdaptableSnail	209576908	CD-1 (ICR)	white	male	7.0	8-12 weeks	NaN	CD-1 (ICR)	white	...	16.0	1266	1100	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "late...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+3	AdaptableSnail	278643799	CD-1 (ICR)	white	male	11.0	8-12 weeks	wireless device	CD-1 (ICR)	white	...	16.0	1224	1100	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "head...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+4	AdaptableSnail	351967631	CD-1 (ICR)	white	male	14.0	8-12 weeks	NaN	CD-1 (ICR)	white	...	16.0	1204	1068	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "late...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+5 rows × 38 columns
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 8789 entries, 0 to 8788
+Data columns (total 38 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   lab_id              8789 non-null   object 
+ 1   video_id            8789 non-null   int64  
+ 2   mouse1_strain       8789 non-null   object 
+ 3   mouse1_color        8789 non-null   object 
+ 4   mouse1_sex          8779 non-null   object 
+ 5   mouse1_id           816 non-null    float64
+ 6   mouse1_age          8140 non-null   object 
+ 7   mouse1_condition    8229 non-null   object 
+ 8   mouse2_strain       8789 non-null   object 
+ 9   mouse2_color        8789 non-null   object 
+ 10  mouse2_sex          8742 non-null   object 
+ 11  mouse2_id           108 non-null    float64
+ 12  mouse2_age          8140 non-null   object 
+ 13  mouse2_condition    7991 non-null   object 
+ 14  mouse3_strain       7943 non-null   object 
+ 15  mouse3_color        7943 non-null   object 
+ 16  mouse3_sex          7943 non-null   object 
+ 17  mouse3_id           17 non-null     float64
+ 18  mouse3_age          7943 non-null   object 
+ 19  mouse3_condition    7933 non-null   object 
+ 20  mouse4_strain       10 non-null     object 
+ 21  mouse4_color        10 non-null     object 
+ 22  mouse4_sex          10 non-null     object 
+ 23  mouse4_id           10 non-null     float64
+ 24  mouse4_age          11 non-null     object 
+ 25  mouse4_condition    3 non-null      object 
+ 26  frames_per_second   8789 non-null   float64
+ 27  video_duration_sec  8789 non-null   float64
+ 28  pix_per_cm_approx   8789 non-null   float64
+ 29  video_width_pix     8789 non-null   int64  
+ 30  video_height_pix    8789 non-null   int64  
+ 31  arena_width_cm      8789 non-null   float64
+ 32  arena_height_cm     8789 non-null   float64
+ 33  arena_shape         8789 non-null   object 
+ 34  arena_type          8779 non-null   object 
+ 35  body_parts_tracked  8789 non-null   object 
+ 36  behaviors_labeled   848 non-null    object 
+ 37  tracking_method     8789 non-null   object 
+dtypes: float64(9), int64(3), object(26)
+memory usage: 2.5+ MB
+None
+video_id	mouse1_id	mouse2_id	mouse3_id	mouse4_id	frames_per_second	video_duration_sec	pix_per_cm_approx	video_width_pix	video_height_pix	arena_width_cm	arena_height_cm
+count	8.789000e+03	816.000000	108.000000	17.000000	10.000000	8789.000000	8789.000000	8789.000000	8789.000000	8789.000000	8789.000000	8789.000000
+mean	1.072697e+09	24.571078	19.518519	35.588235	48.400000	30.402648	134.647855	12.440189	813.654227	790.369667	50.457856	49.299670
+std	6.209820e+08	22.444201	11.660687	4.542285	2.951459	6.434061	637.123844	3.405194	109.410878	133.869821	7.580842	10.705873
+min	9.603000e+03	1.000000	1.000000	29.000000	44.000000	10.000000	19.000000	5.500000	300.000000	194.000000	12.700000	12.000000
+25%	5.380940e+08	6.000000	12.000000	32.000000	46.250000	30.000000	60.000000	11.700000	800.000000	800.000000	52.000000	52.000000
+50%	1.072003e+09	15.000000	17.000000	35.000000	48.000000	30.000000	60.000000	11.700000	800.000000	800.000000	52.000000	52.000000
+75%	1.615401e+09	38.000000	24.250000	39.000000	51.000000	30.000000	60.000000	11.700000	800.000000	800.000000	52.000000	52.000000
+max	2.147479e+09	80.000000	53.000000	42.000000	52.000000	120.020000	19801.000000	65.000000	2048.000000	2056.000000	120.000000	120.000000
+
+================================================================================
+MISSING DATA SUMMARY
+================================================================================
+Column	Missing_Count	Missing_Pct	Data_Type
+25	mouse4_condition	8786	99.97	object
+21	mouse4_color	8779	99.89	object
+22	mouse4_sex	8779	99.89	object
+20	mouse4_strain	8779	99.89	object
+23	mouse4_id	8779	99.89	float64
+24	mouse4_age	8778	99.87	object
+17	mouse3_id	8772	99.81	float64
+11	mouse2_id	8681	98.77	float64
+5	mouse1_id	7973	90.72	float64
+36	behaviors_labeled	7941	90.35	object
+19	mouse3_condition	856	9.74	object
+15	mouse3_color	846	9.63	object
+14	mouse3_strain	846	9.63	object
+16	mouse3_sex	846	9.63	object
+18	mouse3_age	846	9.63	object
+13	mouse2_condition	798	9.08	object
+12	mouse2_age	649	7.38	object
+6	mouse1_age	649	7.38	object
+7	mouse1_condition	560	6.37	object
+10	mouse2_sex	47	0.53	object
+4	mouse1_sex	10	0.11	object
+34	arena_type	10	0.11	object
+
+================================================================================
+LAB STATISTICS
+================================================================================
+
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>video_id_count</th>
+      <th>video_duration_sec_mean</th>
+      <th>video_duration_sec_std</th>
+      <th>video_duration_sec_sum</th>
+      <th>frames_per_second_mean</th>
+      <th>arena_width_cm_mean</th>
+    </tr>
+    <tr>
+      <th>lab_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>MABe22_keypoints</th>
+      <td>5320</td>
+      <td>60.00</td>
+      <td>0.00</td>
+      <td>319200.0</td>
+      <td>30.00</td>
+      <td>52.00</td>
+    </tr>
+    <tr>
+      <th>MABe22_movies</th>
+      <td>2606</td>
+      <td>60.00</td>
+      <td>0.00</td>
+      <td>156360.0</td>
+      <td>30.00</td>
+      <td>52.00</td>
+    </tr>
+    <tr>
+      <th>CalMS21_supplemental</th>
+      <td>297</td>
+      <td>622.29</td>
+      <td>306.63</td>
+      <td>184819.9</td>
+      <td>30.00</td>
+      <td>35.00</td>
+    </tr>
+    <tr>
+      <th>CalMS21_task1</th>
+      <td>101</td>
+      <td>323.80</td>
+      <td>267.49</td>
+      <td>32704.3</td>
+      <td>30.00</td>
+      <td>35.00</td>
+    </tr>
+    <tr>
+      <th>CalMS21_task2</th>
+      <td>76</td>
+      <td>654.09</td>
+      <td>164.37</td>
+      <td>49710.6</td>
+      <td>30.00</td>
+      <td>35.00</td>
+    </tr>
+    <tr>
+      <th>SparklingTapir</th>
+      <td>69</td>
+      <td>259.91</td>
+      <td>249.15</td>
+      <td>17934.0</td>
+      <td>60.14</td>
+      <td>20.32</td>
+    </tr>
+    <tr>
+      <th>JovialSwallow</th>
+      <td>52</td>
+      <td>900.00</td>
+      <td>0.00</td>
+      <td>46800.0</td>
+      <td>10.00</td>
+      <td>15.00</td>
+    </tr>
+    <tr>
+      <th>PleasantMeerkat</th>
+      <td>36</td>
+      <td>600.00</td>
+      <td>0.00</td>
+      <td>21600.0</td>
+      <td>45.00</td>
+      <td>120.00</td>
+    </tr>
+    <tr>
+      <th>InvincibleJellyfish</th>
+      <td>33</td>
+      <td>571.23</td>
+      <td>2.88</td>
+      <td>18850.7</td>
+      <td>30.00</td>
+      <td>28.00</td>
+    </tr>
+    <tr>
+      <th>TranquilPanther</th>
+      <td>25</td>
+      <td>1646.12</td>
+      <td>1380.91</td>
+      <td>41153.0</td>
+      <td>30.00</td>
+      <td>35.00</td>
+    </tr>
+    <tr>
+      <th>LyricalHare</th>
+      <td>24</td>
+      <td>308.09</td>
+      <td>11.02</td>
+      <td>7394.1</td>
+      <td>120.00</td>
+      <td>30.80</td>
+    </tr>
+    <tr>
+      <th>CRIM13</th>
+      <td>21</td>
+      <td>397.34</td>
+      <td>199.79</td>
+      <td>8344.2</td>
+      <td>25.00</td>
+      <td>35.00</td>
+    </tr>
+    <tr>
+      <th>UppityFerret</th>
+      <td>21</td>
+      <td>600.17</td>
+      <td>0.06</td>
+      <td>12603.6</td>
+      <td>24.94</td>
+      <td>38.00</td>
+    </tr>
+    <tr>
+      <th>ReflectiveManatee</th>
+      <td>20</td>
+      <td>606.04</td>
+      <td>7.64</td>
+      <td>12120.9</td>
+      <td>25.00</td>
+      <td>35.00</td>
+    </tr>
+    <tr>
+      <th>ElegantMink</th>
+      <td>19</td>
+      <td>1597.09</td>
+      <td>378.89</td>
+      <td>30344.7</td>
+      <td>30.00</td>
+      <td>33.00</td>
+    </tr>
+    <tr>
+      <th>GroovyShrew</th>
+      <td>17</td>
+      <td>883.84</td>
+      <td>266.02</td>
+      <td>15025.2</td>
+      <td>30.00</td>
+      <td>33.00</td>
+    </tr>
+    <tr>
+      <th>AdaptableSnail</th>
+      <td>17</td>
+      <td>1578.82</td>
+      <td>1301.39</td>
+      <td>26840.0</td>
+      <td>28.82</td>
+      <td>60.00</td>
+    </tr>
+    <tr>
+      <th>NiftyGoldfinch</th>
+      <td>11</td>
+      <td>1073.48</td>
+      <td>276.53</td>
+      <td>11808.3</td>
+      <td>30.00</td>
+      <td>33.00</td>
+    </tr>
+    <tr>
+      <th>CautiousGiraffe</th>
+      <td>10</td>
+      <td>600.00</td>
+      <td>0.00</td>
+      <td>6000.0</td>
+      <td>25.00</td>
+      <td>30.00</td>
+    </tr>
+    <tr>
+      <th>BoisterousParrot</th>
+      <td>8</td>
+      <td>19800.85</td>
+      <td>0.11</td>
+      <td>158406.8</td>
+      <td>30.00</td>
+      <td>45.00</td>
+    </tr>
+    <tr>
+      <th>DeliriousFly</th>
+      <td>6</td>
+      <td>899.95</td>
+      <td>0.16</td>
+      <td>5399.7</td>
+      <td>60.01</td>
+      <td>38.00</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+================================================================================
+HIGH CORRELATION PAIRS
+================================================================================
+
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>Feature 1</th>
+      <th>Feature 2</th>
+      <th>Correlation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>mouse1_id</td>
+      <td>mouse3_id</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>mouse2_id</td>
+      <td>mouse3_id</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>mouse3_id</td>
+      <td>mouse4_id</td>
+      <td>0.995015</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>mouse2_id</td>
+      <td>mouse4_id</td>
+      <td>0.995015</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>mouse1_id</td>
+      <td>mouse4_id</td>
+      <td>0.995015</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>video_duration_sec</td>
+      <td>total_frames</td>
+      <td>0.992927</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>arena_width_cm</td>
+      <td>arena_height_cm</td>
+      <td>0.879768</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>mouse4_id</td>
+      <td>pix_per_cm_approx</td>
+      <td>0.845657</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>mouse4_id</td>
+      <td>frames_per_second</td>
+      <td>0.845657</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>mouse4_id</td>
+      <td>video_duration_sec</td>
+      <td>-0.845647</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>mouse4_id</td>
+      <td>total_frames</td>
+      <td>-0.845640</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>mouse4_id</td>
+      <td>video_height_pix</td>
+      <td>0.815665</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>mouse4_id</td>
+      <td>video_width_pix</td>
+      <td>0.796088</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>mouse3_id</td>
+      <td>total_frames</td>
+      <td>-0.756873</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>mouse3_id</td>
+      <td>video_duration_sec</td>
+      <td>-0.703791</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>mouse1_id</td>
+      <td>mouse2_id</td>
+      <td>0.673474</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>video_height_pix</td>
+      <td>arena_height_cm</td>
+      <td>0.609407</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>pix_per_cm_approx</td>
+      <td>arena_width_cm</td>
+      <td>-0.563246</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>pix_per_cm_approx</td>
+      <td>arena_height_cm</td>
+      <td>-0.530468</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>video_height_pix</td>
+      <td>arena_width_cm</td>
+      <td>0.507283</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+
+
+================================================================================
+LOADING SAMPLE TRACKING DATA
+================================================================================
+Loaded: 1715161851.parquet - 140,196 rows
+Loaded: 427469519.parquet - 20,958 rows
+Loaded: 13638642.parquet - 88,620 rows
+Loaded: 662173177.parquet - 272,622 rows
+Loaded: 877503292.parquet - 145,460 rows
+
+Combined tracking data: (667856, 6)
+
+
+📁 Figures will be saved to: /home/mingjia-guan/workspaces/MABe-2025/eda/figures
+================================================================================
+DATASET DIMENSIONS
+================================================================================
+Train shape: (8789, 38)
+Test shape: (1, 38)
+
+Memory usage:
+  Train: 13.56 MB
+  Test: 0.00 MB
+lab_id	video_id	mouse1_strain	mouse1_color	mouse1_sex	mouse1_id	mouse1_age	mouse1_condition	mouse2_strain	mouse2_color	...	pix_per_cm_approx	video_width_pix	video_height_pix	arena_width_cm	arena_height_cm	arena_shape	arena_type	body_parts_tracked	behaviors_labeled	tracking_method
+0	AdaptableSnail	44566106	CD-1 (ICR)	white	male	10.0	8-12 weeks	wireless device	CD-1 (ICR)	white	...	16.0	1228	1068	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "head...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+1	AdaptableSnail	143861384	CD-1 (ICR)	white	male	3.0	8-12 weeks	NaN	CD-1 (ICR)	white	...	9.7	968	608	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "late...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+2	AdaptableSnail	209576908	CD-1 (ICR)	white	male	7.0	8-12 weeks	NaN	CD-1 (ICR)	white	...	16.0	1266	1100	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "late...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+3	AdaptableSnail	278643799	CD-1 (ICR)	white	male	11.0	8-12 weeks	wireless device	CD-1 (ICR)	white	...	16.0	1224	1100	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "head...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+4	AdaptableSnail	351967631	CD-1 (ICR)	white	male	14.0	8-12 weeks	NaN	CD-1 (ICR)	white	...	16.0	1204	1068	60.0	60.0	square	familiar	["body_center", "ear_left", "ear_right", "late...	["mouse1,mouse2,approach", "mouse1,mouse2,atta...	DeepLabCut
+5 rows × 38 columns
+
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 8789 entries, 0 to 8788
+Data columns (total 38 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   lab_id              8789 non-null   object 
+ 1   video_id            8789 non-null   int64  
+ 2   mouse1_strain       8789 non-null   object 
+ 3   mouse1_color        8789 non-null   object 
+ 4   mouse1_sex          8779 non-null   object 
+ 5   mouse1_id           816 non-null    float64
+ 6   mouse1_age          8140 non-null   object 
+ 7   mouse1_condition    8229 non-null   object 
+ 8   mouse2_strain       8789 non-null   object 
+ 9   mouse2_color        8789 non-null   object 
+ 10  mouse2_sex          8742 non-null   object 
+ 11  mouse2_id           108 non-null    float64
+ 12  mouse2_age          8140 non-null   object 
+ 13  mouse2_condition    7991 non-null   object 
+ 14  mouse3_strain       7943 non-null   object 
+ 15  mouse3_color        7943 non-null   object 
+ 16  mouse3_sex          7943 non-null   object 
+ 17  mouse3_id           17 non-null     float64
+ 18  mouse3_age          7943 non-null   object 
+ 19  mouse3_condition    7933 non-null   object 
+ 20  mouse4_strain       10 non-null     object 
+ 21  mouse4_color        10 non-null     object 
+ 22  mouse4_sex          10 non-null     object 
+ 23  mouse4_id           10 non-null     float64
+ 24  mouse4_age          11 non-null     object 
+ 25  mouse4_condition    3 non-null      object 
+ 26  frames_per_second   8789 non-null   float64
+ 27  video_duration_sec  8789 non-null   float64
+ 28  pix_per_cm_approx   8789 non-null   float64
+ 29  video_width_pix     8789 non-null   int64  
+ 30  video_height_pix    8789 non-null   int64  
+ 31  arena_width_cm      8789 non-null   float64
+ 32  arena_height_cm     8789 non-null   float64
+ 33  arena_shape         8789 non-null   object 
+ 34  arena_type          8779 non-null   object 
+ 35  body_parts_tracked  8789 non-null   object 
+ 36  behaviors_labeled   848 non-null    object 
+ 37  tracking_method     8789 non-null   object 
+dtypes: float64(9), int64(3), object(26)
+memory usage: 2.5+ MB
+None
+video_id	mouse1_id	mouse2_id	mouse3_id	mouse4_id	frames_per_second	video_duration_sec	pix_per_cm_approx	video_width_pix	video_height_pix	arena_width_cm	arena_height_cm
+count	8.789000e+03	816.000000	108.000000	17.000000	10.000000	8789.000000	8789.000000	8789.000000	8789.000000	8789.000000	8789.000000	8789.000000
+mean	1.072697e+09	24.571078	19.518519	35.588235	48.400000	30.402648	134.647855	12.440189	813.654227	790.369667	50.457856	49.299670
+std	6.209820e+08	22.444201	11.660687	4.542285	2.951459	6.434061	637.123844	3.405194	109.410878	133.869821	7.580842	10.705873
+min	9.603000e+03	1.000000	1.000000	29.000000	44.000000	10.000000	19.000000	5.500000	300.000000	194.000000	12.700000	12.000000
+25%	5.380940e+08	6.000000	12.000000	32.000000	46.250000	30.000000	60.000000	11.700000	800.000000	800.000000	52.000000	52.000000
+50%	1.072003e+09	15.000000	17.000000	35.000000	48.000000	30.000000	60.000000	11.700000	800.000000	800.000000	52.000000	52.000000
+75%	1.615401e+09	38.000000	24.250000	39.000000	51.000000	30.000000	60.000000	11.700000	800.000000	800.000000	52.000000	52.000000
+max	2.147479e+09	80.000000	53.000000	42.000000	52.000000	120.020000	19801.000000	65.000000	2048.000000	2056.000000	120.000000	120.000000
+
+================================================================================
+MISSING DATA SUMMARY
+================================================================================
+Column	Missing_Count	Missing_Pct	Data_Type
+25	mouse4_condition	8786	99.97	object
+21	mouse4_color	8779	99.89	object
+22	mouse4_sex	8779	99.89	object
+20	mouse4_strain	8779	99.89	object
+23	mouse4_id	8779	99.89	float64
+24	mouse4_age	8778	99.87	object
+17	mouse3_id	8772	99.81	float64
+11	mouse2_id	8681	98.77	float64
+5	mouse1_id	7973	90.72	float64
+36	behaviors_labeled	7941	90.35	object
+19	mouse3_condition	856	9.74	object
+15	mouse3_color	846	9.63	object
+14	mouse3_strain	846	9.63	object
+16	mouse3_sex	846	9.63	object
+18	mouse3_age	846	9.63	object
+13	mouse2_condition	798	9.08	object
+12	mouse2_age	649	7.38	object
+6	mouse1_age	649	7.38	object
+7	mouse1_condition	560	6.37	object
+10	mouse2_sex	47	0.53	object
+4	mouse1_sex	10	0.11	object
+34	arena_type	10	0.11	object
+
+================================================================================
+LAB STATISTICS
+================================================================================
+video_id_count	video_duration_sec_mean	video_duration_sec_std	video_duration_sec_sum	frames_per_second_mean	arena_width_cm_mean
+lab_id						
+MABe22_keypoints	5320	60.00	0.00	319200.0	30.00	52.00
+MABe22_movies	2606	60.00	0.00	156360.0	30.00	52.00
+CalMS21_supplemental	297	622.29	306.63	184819.9	30.00	35.00
+CalMS21_task1	101	323.80	267.49	32704.3	30.00	35.00
+CalMS21_task2	76	654.09	164.37	49710.6	30.00	35.00
+SparklingTapir	69	259.91	249.15	17934.0	60.14	20.32
+JovialSwallow	52	900.00	0.00	46800.0	10.00	15.00
+PleasantMeerkat	36	600.00	0.00	21600.0	45.00	120.00
+InvincibleJellyfish	33	571.23	2.88	18850.7	30.00	28.00
+TranquilPanther	25	1646.12	1380.91	41153.0	30.00	35.00
+LyricalHare	24	308.09	11.02	7394.1	120.00	30.80
+CRIM13	21	397.34	199.79	8344.2	25.00	35.00
+UppityFerret	21	600.17	0.06	12603.6	24.94	38.00
+ReflectiveManatee	20	606.04	7.64	12120.9	25.00	35.00
+ElegantMink	19	1597.09	378.89	30344.7	30.00	33.00
+GroovyShrew	17	883.84	266.02	15025.2	30.00	33.00
+AdaptableSnail	17	1578.82	1301.39	26840.0	28.82	60.00
+NiftyGoldfinch	11	1073.48	276.53	11808.3	30.00	33.00
+CautiousGiraffe	10	600.00	0.00	6000.0	25.00	30.00
+BoisterousParrot	8	19800.85	0.11	158406.8	30.00	45.00
+DeliriousFly	6	899.95	0.16	5399.7	60.01	38.00
+
+================================================================================
+HIGH CORRELATION PAIRS
+================================================================================
+Feature 1	Feature 2	Correlation
+1	mouse1_id	mouse3_id	1.000000
+3	mouse2_id	mouse3_id	1.000000
+5	mouse3_id	mouse4_id	0.995015
+4	mouse2_id	mouse4_id	0.995015
+2	mouse1_id	mouse4_id	0.995015
+14	video_duration_sec	total_frames	0.992927
+19	arena_width_cm	arena_height_cm	0.879768
+10	mouse4_id	pix_per_cm_approx	0.845657
+8	mouse4_id	frames_per_second	0.845657
+9	mouse4_id	video_duration_sec	-0.845647
+13	mouse4_id	total_frames	-0.845640
+12	mouse4_id	video_height_pix	0.815665
+11	mouse4_id	video_width_pix	0.796088
+7	mouse3_id	total_frames	-0.756873
+6	mouse3_id	video_duration_sec	-0.703791
+0	mouse1_id	mouse2_id	0.673474
+18	video_height_pix	arena_height_cm	0.609407
+15	pix_per_cm_approx	arena_width_cm	-0.563246
+16	pix_per_cm_approx	arena_height_cm	-0.530468
+17	video_height_pix	arena_width_cm	0.507283
+
+================================================================================
+LOADING SAMPLE TRACKING DATA
+================================================================================
+Loaded: 1715161851.parquet - 140,196 rows
+Loaded: 427469519.parquet - 20,958 rows
+Loaded: 13638642.parquet - 88,620 rows
+Loaded: 662173177.parquet - 272,622 rows
+Loaded: 877503292.parquet - 145,460 rows
+
+Combined tracking data: (667856, 6)
+
+================================================================================
+LOADING SAMPLE ANNOTATION DATA
+================================================================================
+Loaded: 1715161851.parquet - 48 rows
+Loaded: 427469519.parquet - 25 rows
+Loaded: 13638642.parquet - 65 rows
+Loaded: 662173177.parquet - 276 rows
+Loaded: 877503292.parquet - 57 rows
+
+Combined annotation data: (471, 6)
+
+
+
+================================================================================
+STATISTICAL TESTS
+================================================================================
+
+ANOVA: Video duration across arena types
+  F-statistic: 155.7020
+  P-value: 6.4302e-129
+  Result: Significant difference
+
+Pearson correlation: Arena width vs Video width
+  Correlation: 0.3125
+  P-value: 1.9942e-198
+  Result: Significant correlation
+
+
+
+================================================================================
+DATA QUALITY SCORE CARD
+================================================================================
+Total Records........................... 8789
+Complete Records........................ 3
+Completeness (%)........................ 0.03
+Duplicate Records....................... 0
+Unique Labs............................. 21
+Unique Videos........................... 8789
+Unique Mice (approx).................... 80
+Numeric Columns......................... 13
+Categorical Columns..................... 26
+Missing Cell %.......................... 27.13
+.
+
+
+
+
+================================================================================
+COMPREHENSIVE EDA SUMMARY
+================================================================================
+
+DATASET OVERVIEW:
+- Training records: 8,789
+- Test records: 1
+- Total features: 39
+- Numeric features: 13
+- Categorical features: 26
+
+KEY FINDINGS:
+1. Lab Distribution: 21 unique labs
+   - Largest: MABe22_keypoints (5,320 videos)
+   - Smallest: DeliriousFly (6 videos)
+
+2. Video Properties:
+   - Average duration: 134.6 seconds
+   - Most common FPS: 30
+   - Most common resolution: 800x800
+
+3. Experimental Setup:
+   - Arena types: 5
+   - Arena shapes: 4
+   - Tracking methods: 4
+
+4. Mouse Subjects:
+   - Approximate unique mice: 80
+   - Most common strain: C57Bl/6J
+   - Most common sex: male
+
+5. Data Quality:
+   - Completeness: 0.0%
+   - Missing data: 27.1%
+   - Duplicates: 0
+
+RECOMMENDATIONS:
+✓ Handle missing data in mouse4 columns (appears to be 3-mouse experiments)
+✓ Consider lab-specific normalization due to protocol differences
+✓ Investigate high correlation between mouse IDs for feature engineering
+✓ Analyze temporal patterns in behavior annotations
+✓ Create interaction features from tracking data
+✓ Consider stratified sampling by lab for train/val splits
+
+
+================================================================================
+✅ COMPREHENSIVE EDA COMPLETE
+================================================================================
+📊 Total figures generated: ~15-20 high-quality visualizations
+📁 All outputs saved to: /home/mingjia-guan/workspaces/MABe-2025/eda/figures
+📄 Summary report saved to: /home/mingjia-guan/workspaces/MABe-2025/eda/eda_summary_report.txt
