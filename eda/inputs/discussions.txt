@@ -1,0 +1,719 @@
+Erroneous annotations. Case study: AdaptableSnail/1212811043 sample
+I wrote a short script to visualize the trackers and annotations for a given lab/video. So far I've only tested AdaptableSnail (video_id: 1212811043) and it looks like the annotations are erroneous.
+
+The annotations form a title as comma-separated actions:
+
+f"{agent_id} {action} {target_id}"
+Original annotations:
+
+agent_id	target_id	action	start_frame	stop_frame
+0	1	3	chase	2
+1	1	3	chase	128
+2	3	2	avoid	324
+3	3	1	avoid	324
+4	1	2	chase	942
+5	4	3	chase	1205
+6	4	3	chase	1313
+7	1	2	chase	1416
+8	4	3	chase	1819
+9	4	2	chase	2041
+New annotations:
+
+agent_id	target_id	action	start_frame	stop_frame
+0	3	2	chase	2
+1	3	2	chase	128
+2	2	3	avoid	324
+3	2	1	avoid	324
+4	4	2	chase	942
+5	3	1	chase	1205
+6	3	1	chase	1313
+7	3	1	chase	1416
+8	4	3	chase	1819
+9	4	3	chase (chaseattack?)	2041
+It doesn't look like a simple labelling error, unless it was done on the basis of some specific bodypart trackers, which sometimes get swapped.
+
+I've attached a sample MP4 showing the first 2200 frames.
+
+AdaptableSnail-1212811043-0..2200.mp4
+
+React
+13 Comments
+Hotness
+ 
+Comment here. Be patient, be friendly, and focus on ideas. We're all here to learn and improve!
+This comment will be made public once posted.
+
+
+Post Comment
+Steve Roberts
+Posted 11 days ago
+
+· 10th in this Competition
+
+
+
+Hi @annkennedy05 - I took a look at the AdaptableSnail videos that have FPS of 25 and, as you say, modifying these by 25/30 does give the correct start and stop frames. However, as @angantyr found for the 1212811043 video, all of these 25 FPS videos also seem to have the incorrect labelling for the mice. For example, in the picture (from video_id = 878123481) it can be seen that mouse 3 is chasing mouse 1, however in the annotation it has this time period as 4 chasing 3:
+
+
+
+This swapping of the mice seems to occur in all of the AdaptableSnail 25 FPS videos, and may even occur in a much wider set. Obviously I could re-label the annotations, to give the correct mice IDs, but this would only help with training - if the test data also has this mislabelling then we'd never be able to predict the correct actions.
+
+Does this mislabelling occur for all the AdaptableSnail videos and, if it does, will there be an update to fix this (or will this labs data be removed from the data set)?
+
+
+Reply
+
+React
+Xz
+Posted 11 days ago
+
+· 119th in this Competition
+
+Has this issue been fixed yet? I am trying to decide if I should spend time on this competition.
+
+
+Reply
+
+React
+Ann Kennedy
+Competition Host
+Posted 19 days ago
+
+You are correct, animal identities were permuted in this video, and your ID-swaps correct for this. In investigating this I also found that this and 4 other videos (one in test and 4 in train) from this dataset have another issue. These 5 videos were all acquired at 25 fps (the rest are at 30), but the annotations--and not the pose--have been rescaled to be at 30fps. If you multiply all action start and stop frames by 25/30 you will see much better synchronization between annotations and behavior in these videos.
+
+I am double-checking this now and also running a test to look for other videos that have had identity permutations.
+
+There are definitely other places in the dataset where the annotator just needs coffee :) it's not the most exciting job, labeling mouse behaviors!
+
+
+Reply
+
+3
+
+1
+Jack Vittimberga
+Posted 18 days ago
+
+· 2nd in this Competition
+
+Hi Ann, thank you for all the data quality insights. You mentioned there was a video in the test set with this issue and I was wondering if that issue was corrected. Just wondering if my last submission improved from making meaningful progress or if the test set was just cleaned. Thanks!
+
+
+Reply
+
+React
+Ann Kennedy
+Competition Host
+Posted 18 days ago
+
+Not yet, I'm consulting with Kaggle on how/when to most effectively make this fix.
+
+
+Reply
+
+React
+Youri Matiounine
+Posted 7 days ago
+
+· 7th in this Competition
+
+@annkennedy05: is there an ETA on the data fix? We only have a little more than one month left in the competition, the fix should not be delayed too much.
+
+And the fix will apply to both test and train data, correct?
+
+
+Reply
+
+React
+Will Hirsch
+Posted 18 days ago
+
+· 824th in this Competition
+
+Thanks for these investigations Ann! Since you're looking into these issues I just want to bump my observation that MABe22_movies still has an issue with permutation of agent/bodypart assignment since the data patch too. Seems this may have gotten buried.
+
+
+Reply
+
+React
+Ann Kennedy
+Competition Host
+Posted 18 days ago
+
+Thanks for the reminder, and I apologize for this not getting fixed earlier. Will make a patch to the dataset if Kaggle folks don't think it's too late, stay tuned.
+
+
+Reply
+
+2
+Ogurtsov
+Posted 13 days ago
+
+· 6th in this Competition
+
+@annkennedy05 Please let us know if some fixes are upcoming (or if we should fix it all alone).
+
+
+Reply
+
+React
+Youri Matiounine
+Posted 20 days ago
+
+· 7th in this Competition
+
+This makes sense; my CV For "AdaptableSnail" is only 0.19, and for that lab it is bad for all 7 possible actions (0.03 to 0.28). This is compared of average CV of all other labs of around 0.53. So i suspect many/most/all agent/target/action labels are incorrect for "AdaptableSnail" lab. Perhaps competition hosts can correct them in both train and test data. I hope @annkennedy05 can answer this question.
+
+
+Reply
+
+React
+Angantyr
+Topic Author
+Posted 19 days ago
+
+From what I see many trackers/annotations are often choppy and sparse too. Some labels are very precise, while others can be missing altogether.
+
+I have to sit down and do a round up of the tracker videos but other stuff gets a higher priority. TL;DR From what I see the erroneous labels were observed only in the AdaptableSnail/1212811043 video.
+
+
+Reply
+
+1
+kyoumonemui
+Posted 19 days ago
+
+· 547th in this Competition
+
+Looks like I should’ve treated the annotator to some coffee.
+
+
+Reply
+
+1
+milan muntenjon
+Posted 22 days ago
+
+I checked a lot of files, this issue seems to be an anomaly. I can't spot a pattern in the labeling, so it's likely just a human mistake.
+
+
+Reply
+
+React
+Khushi Yadav
+Posted 13 days ago
+
+Hey Thanks you for all the data quality insights.
+
+
+Reply
+
+1
+pekoshda
+Posted 14 days ago
+
+Gosh! i have the same problem. I also visualized it and watched all morning, that doesn't look like chasing at all lol. Fortunately, i saw this.
+
+
+Reply
+
+React
+kyoumonemui
+Posted 22 days ago
+
+· 547th in this Competition
+
+Have similar issues been found in other video IDs of AdaptableSnail?
+
+
+Reply
+
+React
+Angantyr
+Topic Author
+Posted 22 days ago
+
+Yet to be verified.
+
+
+Reply
+
+React
+
+
+
+------------------------------------------------------------------------------------
+
+
+
+
+Welcome to the Competition!
+Welcome to the MABe 2025 Mouse Social Action Recognition competition!
+
+The goal of this competition is to build machine learning tools that can unite the diverse spectrum of data collected by groups studying mouse behaviors.
+
+
+
+We're a group of neuroscientists and ML researchers studying how our brains are wired for social interactions and instinctive behaviors. Several of us have made mouse action recognition systems in the past, but so far these only work in specific settings, and fail as soon as they see out-of-sample data. We hope this dataset will fuel the development of better, more robust and generalizable tools for behavioral researchers!
+
+We're very excited to host this competition, and happy to answer your questions.
+
+Thank you for joining us, and best of luck!
+
+
+7
+
+27
+14 Comments
+Hotness
+ 
+Comment here. Be patient, be friendly, and focus on ideas. We're all here to learn and improve!
+This comment will be made public once posted.
+
+
+Post Comment
+A Random Hobbyist
+Posted 2 days ago
+
+Hi, about the submission, I don't know how to deduce the identities of agent_id and target_id. I'm planning to use XGBClassifier for the training, and does anyone have any good approaches where I can start? Thanks.
+
+
+Reply
+
+React
+Gnaix
+Posted a month ago
+
+· 322nd in this Competition
+
+Dear Organizers,
+
+Could you clarify if I can use a self-trained LightGBM model (hosted publicly on GitHub) in my submission notebook?
+
+Training it directly on Kaggle hits memory limits, but I’d train it locally using only permitted data, upload the model to a public GitHub repo (meeting "freely & publicly available" rules), and load it via the GitHub link in the notebook for predictions.
+
+Does this comply with the competition guidelines?
+
+Thanks!
+
+
+Reply
+
+React
+Ann Kennedy
+Competition Host
+Posted a month ago
+
+Yes, this is allowed.
+
+
+Reply
+
+1
+Khushi Yadav
+Posted a month ago
+
+Thanks ,the MABe 2025 Mouse Social Action Recognition competition!
+
+
+Reply
+
+React
+Victor Shlepov
+Posted a month ago
+
+Hi Ann,
+
+Quick question - there's a "mouse_id" field in train.csv. Should we expect new IDs to appear in the test set? Is it just a mouse identifier, or is it an anonymized categorical variable like they often use in trading?
+
+Also, could you clarify what "day 1 - 00:40 (lights off)" means in the "conditions" field? I understand the lights on/off part, but what is considered the starting timestep?
+
+Thanks!
+
+
+Reply
+
+React
+Ann Kennedy
+Competition Host
+Posted a month ago
+
+Great question! The mouse_id is just a mouse identifier (if the field is blank, it's because that information wasn't recorded during the experiment.) The mice in the test set are all different animals from those in the training set- we do this so that it's a true statistically independent test of classifier performance, since different animals can have their own idiosyncratic ways of moving that we don't want to overfit on.
+
+Re conditions- the MABe22 datasets come from an experiment where animals were tracked 24 hours a day for four days, partly to study sleep/wake behavior. "day 1 - 00:40" means 12:40am on day 1 of the recording. Mice are nocturnal and have other circadian rhythms to their behavior, so the timestamp in this data gives you some information about what behavioral states they're likely to be in.
+
+
+Reply
+
+React
+Victor Shlepov
+Posted a month ago
+
+Thanks! This saves me an extra "mouse_id" embedding :)
+
+
+Reply
+
+1
+Pawan26 Singh
+Posted a month ago
+
+· 724th in this Competition
+
+I am trying to submit notebook. But its been 8 hours notebook is just running, I can see it in my submission tab. What could be the issue here, I will put the image below?
+
+
+Reply
+
+React
+anurag_dataanalyst
+Posted 2 months ago
+
+To MABe Challenge Team, Hi, I’m trying to implement the baseline model for social action recognition. I’m having trouble with preprocessing the video frames. Has anyone used the dataset augmentation method mentioned in the starter notebook?
+
+With regards..
+
+
+Reply
+
+React
+Sphesihle Qwabe
+Posted 2 months ago
+
+Thank you very much for the clarification 🙏. That helps a lot.
+
+For now, I’ll focus on the provided competition dataset to make sure I understand the pipeline correctly. Later, I might look into external datasets if it’s useful and still within the rules.
+
+Could you also please confirm: when submitting, do we only need to upload our notebook that generates a submission.csv in the correct format? Or is there anything else required (such as using the starter notebook structure)?
+
+Thanks again for your guidance—I really appreciate the support from this community.
+
+
+Reply
+
+React
+Sphesihle Qwabe
+Posted 2 months ago
+
+Dear MABe Challenge Team,
+
+I hope this message finds you well. My name is Sphesihle Qwabe, and I am participating in the MABe Challenge – Social Action Recognition in Mice.
+
+I would like to clarify a question regarding the dataset. Am I required to use only the datasets provided by the competition, or am I allowed to search for and incorporate additional external datasets to improve my model? If external datasets are allowed, are there any specific guidelines or restrictions I should be aware of?
+
+Thank you very much for your time and guidance. I appreciate your support and look forward to your response.
+
+
+Reply
+
+React
+continuingdev
+Posted 2 months ago
+
+As per Code Requirements under the Overview tab: Freely & publicly available external data is allowed, including pre-trained models (note that we already provide formatted copies of most known external data, see below.)
+
+
+Reply
+
+React
+Sphesihle Qwabe
+Posted 2 months ago
+
+So can I find my own external datasets and do everything that requires in my own notebook can I know how should I submit, can your also please tell specifically what is actually needed to do to this Competition
+
+
+Reply
+
+React
+The Swimmer
+Posted 2 months ago
+
+I've been doing some research for this competition, and so far it's been quite interesting. Only, I'm not sure what to do with the MABe F Beta metric notebook, is it supposed to be implemented into our own notebooks?
+
+I'm talking about this notebook: https://www.kaggle.com/code/metric/mabe-f-beta I'm just confused on what to do with it.
+
+
+Reply
+
+React
+Ann Kennedy
+Competition Host
+Posted 2 months ago
+
+The metric notebook is to show you how your own submissions will be evaluated- you don't need to use it in your own code, but you might want to examine it to get an understanding of how scores are calculated.
+
+
+Reply
+
+React
+
+
+
+
+---------------------------------------------------------
+
+
+Train has 90% behaviors_labeled = NAN
+I've noticed that train.csv has 90% of row with behaviors_labeled = NAN. During submit/inference are there also rows of test.csv with behaviors_labeled = NAN? (and we should predict no actions for these rows)?
+
+
+React
+4 Comments
+Hotness
+ 
+Comment here. Be patient, be friendly, and focus on ideas. We're all here to learn and improve!
+This comment will be made public once posted.
+
+
+Post Comment
+Tony Li
+Posted 8 days ago
+
+· 17th in this Competition
+
+MABe Mouse Behavior Dataset — Exploratory Analysis
+1. Dataset Overview
+Train videos: 8 789 rows spanning 21 labs; MABe22_keypoints (5 320) and MABe22_movies (2 606) contribute 90 % of the rows.
+Behavior-labeled subset: 848 videos (9.7 %) provide non-empty behaviors_labeled; all reside outside the MABe22_* labs.
+Test set: Single video (AdaptableSnail, 30 fps, 615 s) with 18 tracked parts and 76 candidate behaviors.
+Parquet assets: train_tracking holds 8 789 pose files (one per train row); train_annotation contains 847 label files aligning with the behavior-annotated subset; test_tracking has 1 file.
+2. Video Metadata Distributions
+Frame rate: Mean 30.4 fps (min 10, max 120.02). Most labs film at 30 fps; notable outliers include JovialSwallow (10 fps) and SparklingTapir (30–120 fps, mean 60.1).
+Duration: Mean 134.6 s but highly skewed (median 60 s, max 19 801 s ≈ 5.5 h). MABe22_* clips are fixed 60 s; TranquilPanther spans up to 4 819 s.
+Pixel density: Mean 12.4 px/cm with tight clustering at 11.7 (all MABe22_*) and elevated values for SparklingTapir (15–65 px/cm) and InvincibleJellyfish (32 px/cm).
+Arena metadata: Shapes are predominantly square (7 961) with smaller rectangular (771), split-rectangular (36), and circular (21) setups. Arena type is mostly “neutral” (8 017) with resident-intruder paradigms (692) and a handful of familiar, CSDS, or blank entries (10).
+Tracking method: custom HRnet (7 926) dominates; the remainder uses MARS (528), DeepLabCut (211), or SLEAP (124).
+3. Mice & Experimental Context
+Group size: 3 mice per video (7 933 rows) is standard; 846 videos track 2 mice, only 10 videos involve 4 mice.
+Sex distribution: Strongly male-skewed (25 105 male records vs. 369 female across role slots).
+Strains: C57Bl/6J (14 800) and BTBR (9 786) dominate; BALB/c (606) and CD1 families trail.
+Colors: Principally black (14 913) and black-and-tan (9 786), with 821 white mice from the CD-1 cohorts.
+Conditions & ages: Most logs list “10–20 weeks”; a long tail of circadian experiment stamps (e.g., “day 2- 23:00 (lights off)”) appear in SparklingTapir runs.
+4. Body-Part Coverage
+Configurations: Only 10 unique body-part sets. The canonical 12-part HRNet layout (ears, nose, tail base/tip, fore/hind paws, body center) covers 7 926 videos.
+Counts: Body-part numbers range 4–18 (median 12). Extended headpiece rigs (18 parts) appear in the CalMS21-style recordings; hip points appear in 655 videos.
+Per-part frequency: ear_left, ear_right, and tail_base appear in all train rows; body_center is missing from some legacy, 7-part rigs.
+5. Behavior Labels
+Availability by lab: All CalMS21/CRIM13-style labs (e.g., CalMS21_task1, JovialSwallow, PleasantMeerkat) provide complete label coverage; SparklingTapir labels 54/69 videos; MABe22_* contribute no annotated behaviors.
+Segments per video: Behavior counts span 1–76 (median 3, 75th percentile 6). Most videos have sparse annotations; a few multi-action sessions carry dense labels.
+Action popularity (agent/target aware):
+mouse1,mouse2,sniff (608 clips) and mouse1,mouse2,attack (443) lead pair interactions.
+Self behaviors include rear (211), selfgroom (144), and dig (85).
+Action popularity (action only): sniff (646), attack (644), sniffgenital (504), approach (354), chase (328), mount (314).
+Interaction balance: Pair interactions represent 4 325 labeled behaviors vs. 594 self actions, underscoring the dataset’s focus on social dynamics.
+6. Notable Patterns & Data Quality Notes
+Massive label imbalance: the bulk of training videos (all MABe22_*) lack annotation files, so supervised training requires either external labels or semi-supervised strategies.
+SparklingTapir runs introduce the widest variation in frame rate (30–120 fps), pixel density, and experimental conditions—helpful for generalization but a source of heterogeneity.
+A handful of rows contain blank arena_type fields or exotic experimental descriptors; downstream code should defensively handle "" values.
+Mouse metadata is male-heavy, so target behaviors featuring females (e.g., maternal or sexual dimorphism) may be underrepresented.
+Pose rigs differ (7-, 12-, 18-point layouts). Feature pipelines should expect missing columns when switching labs.
+
+Reply
+
+3
+Tom
+Posted 8 days ago
+
+· 38th in this Competition
+
+@cdeotte Welcome back, Chris, after MAP! This competition has so many dimensions to explore, and I’m really enjoying it. I’m also excited to see what approach you’ll come up with.
+
+
+Reply
+
+React
+Satwik
+Posted 8 days ago
+
+· 38th in this Competition
+
+I think that is because ~8000 of the ~8800 videos in the train dataset are from the Mabe2022_moveis and MAbe2022_keypoints dataset, which is not labelled for any actions. Only 800 videos (from other labs) are labelled. More details here
+
+
+Reply
+
+React
+Chris Deotte
+Topic Author
+Posted 8 days ago
+
+· 12th in this Competition
+
+Gotcha. And can we assume that test data does not have any of this unlabeled data?
+
+
+Reply
+
+React
+Satwik
+Posted 8 days ago
+
+· 38th in this Competition
+
+I think so, because the entire Mabe2022 dataset is present in the training set, so it won't be in the test data. Also, the metric evaluation is done on the intersection of the labels that the test has and the behaviors_labeled set by us. Since some labs only want to study a certain action, or label only a certain mouse, even when there are other actions occurring, there is no label for that present in the data (due to the nature of the labs' study). In those cases, we are not penalized for FPs. For example, if we have a 100% accurate sniff detection model, but a lab only annotates "rear", but sniffing occurs in that video and we predict it on the test set, we won't get penalized for it. Same goes for mouse pairs. If only mice 1,2 are being labeled by a lab, and we predict something that actually happens on another pair, let's say 1,3 but that is not present in the ground truth behaviors_labeled, we won't get penalized either. This thread has most of the nuances talked about by the hosts.
+
+This is consistent throughout train and test sets, so a lab annotating for only one action might have 10 other actions happening but lack annotations for those (which are basically false negatives in our training data). Quite the tricky competition.
+
+
+Reply
+
+React
+
+
+
+---------------------------------------------------------
+
+Why is everything in "BoisterousParrot" annotated "shepherd"?
+I am sorry if this question has been asked before, but is this also the case in the test set?
+
+
+React
+2 Comments
+Hotness
+ 
+Comment here. Be patient, be friendly, and focus on ideas. We're all here to learn and improve!
+This comment will be made public once posted.
+
+
+Post Comment
+Satwik
+Posted 9 days ago
+
+· 38th in this Competition
+
+It is most likely that, that lab was studying only for the 'shepherd' action, hence only that is annotated. There was another discussion thread about this, and as per the hosts, it is also highly likely that there are multiple other actions that have occurred in the videos from that lab but not annotated because those actions were not the focus of the study of that particular lab.
+
+
+Reply
+
+React
+Xz
+Topic Author
+Posted 9 days ago
+
+· 119th in this Competition
+
+I see. Thanks for your explanation!
+
+
+Reply
+
+React
+
+---------------------------------------------------------
+
+Are some files corrupt?
+The mice of this competition can be visualized:
+
+
+
+The visualization works for all lab_ids except MABe22_keypoints and MABe22_movies. The following plot is supposed to show three mice from a MABe22_keypoints video, and it is obviously wrong:
+
+
+
+If we plot the same points without the lines and polygons, we immediately see three clusters resembling three mice. This observation leads to the conjecture that the MABe22_keypoints and MABe22_movies files somehow got garbled when they were prepared for this competition. The coordinates are correct, but they are assigned to the wrong mice and bodyparts.
+
+
+
+Source code is here.
+
+
+2
+3 Comments
+Hotness
+ 
+Comment here. Be patient, be friendly, and focus on ideas. We're all here to learn and improve!
+This comment will be made public once posted.
+
+
+Post Comment
+Ann Kennedy
+Competition Host
+Posted 2 months ago
+
+Very nice visualizations! You are right, mouse IDs of bodyparts in the MABe22 dataset got shifted during data conversion: it seems that the concatenated vector of body parts were given mouse IDs [1,2,3,1,2,3,1,2,3…] rather than [1,1,1,…2,2,2…3,3,3…]. We've identified the culprit and will have the files updated asap next week.
+
+
+Reply
+
+2
+
+1
+🐢 Jun Koda
+Posted 2 months ago
+
+@annkennedy05 Thanks! Is it intended that we don't have behaviors_labeled and train_annotation directory for MABe22_keypoints and MABe22_movies? The original MABe22 dataset seems to have some annotations…
+
+
+Reply
+
+React
+Ann Kennedy
+Competition Host
+Posted 2 months ago
+
+The annotations in the original dataset are generated heuristically rather than via manual annotation (we hand-annotated a subset later but it's quite small.) You could potentially regenerate the heuristic annotations using the criteria in the paper, but these actually had a LOT of false negatives, hence the later manual annotation. The "sequence-level" annotations, eg time-of-day information, is included in the metadata.
+
+
+Reply
+
+1
+Antonina Dolgorukova
+Posted 2 months ago
+
+· 6th in this Competition
+
+Thanks for clarifying the missing annotations for MABe22. The articles you pointed to in the competition description are very useful!
+
+But what about video 1375833299 (PleasantMeerkat)? in train.csv, it is listed with behaviors_labeled, yet I can’t find any corresponding annotation file.
+
+
+Reply
+
+React
+Ann Kennedy
+Competition Host
+Posted 2 months ago
+
+Sorry I missed this post! So an important detail here: in some videos, the labs annotated for (ie looked for) a behavior, but it never actually occurred. In this case, we still list that behavior in behaviors_labeled because it is safe to use the video as a source of negative training data. (In contrast, if a behavior doesn't show up in the behaviors_labeled column that just means that researchers never checked for it, not that it never happened.)
+
+In the case of PleasantMeerkat, the annotators looked for several behaviors, but the mice in this experiment interacted so rarely that for that particular video none of them occurred, hence the annotation file for video 1375833299 is completely empty. I'll see though if we can provide an empty placeholder file just so this doesn't trip up people's analysis code.
+
+Thank you for checking this!
+
+
+Reply
+
+React
+Antonina Dolgorukova
+Posted 2 months ago
+
+· 6th in this Competition
+
+Ahh, good to know, thank yuo!
+
+
+Reply
+
+React
+
+Hide replies
+Sohier Dane
+Kaggle Staff
+Posted 2 months ago
+
+We'll take a look at this but will most likely not have an update until early to mid next week.
+
+
+Reply
+
+React
+
+---------------------------------------------------------
+---------------------------------------------------------
+---------------------------------------------------------
+---------------------------------------------------------
+---------------------------------------------------------
+
+
+
