@@ -20,3 +20,8 @@ dependencies = [
     "torchvision>=0.23.0",
     "tqdm>=4.67.1",
 ]
+
+[dependency-groups]
+dev = [
+    "jupytext>=1.18.1",
+]

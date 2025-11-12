@@ -1,0 +1,40 @@
+
+DATASET OVERVIEW:
+- Training records: 8,789
+- Test records: 1
+- Total features: 39
+- Numeric features: 13
+- Categorical features: 26
+
+KEY FINDINGS:
+1. Lab Distribution: 21 unique labs
+   - Largest: MABe22_keypoints (5,320 videos)
+   - Smallest: DeliriousFly (6 videos)
+
+2. Video Properties:
+   - Average duration: 134.6 seconds
+   - Most common FPS: 30
+   - Most common resolution: 800x800
+
+3. Experimental Setup:
+   - Arena types: 5
+   - Arena shapes: 4
+   - Tracking methods: 4
+
+4. Mouse Subjects:
+   - Approximate unique mice: 80
+   - Most common strain: C57Bl/6J
+   - Most common sex: male
+
+5. Data Quality:
+   - Completeness: 0.0%
+   - Missing data: 27.1%
+   - Duplicates: 0
+
+RECOMMENDATIONS:
+✓ Handle missing data in mouse4 columns (appears to be 3-mouse experiments)
+✓ Consider lab-specific normalization due to protocol differences
+✓ Investigate high correlation between mouse IDs for feature engineering
+✓ Analyze temporal patterns in behavior annotations
+✓ Create interaction features from tracking data
+✓ Consider stratified sampling by lab for train/val splits
