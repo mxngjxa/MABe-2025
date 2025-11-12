@@ -1,0 +1,24 @@
+
+ADAPTABLESNAIL (TEST SET LAB) CHARACTERISTICS:
+------------------------------------------------
+1. Movement Speed:
+   - Median: 48.72 pixels/frame
+   - Normalized: 96.72 cm/sec
+   - Rank: 12 out of 21 labs
+
+2. Statistical Differences from Other Labs:
+   - Significant speed differences: 20/20 labs (p < 0.05)
+   - Significant angle differences: 20/20 labs (p < 0.05)
+
+3. Video Properties:
+   - FPS: 30.0
+   - Arena: 60.0 x 60.0 cm
+   - Pixel density: 16.0 pix/cm
+
+RECOMMENDATIONS FOR MODELING:
+----------------------------
+✓ Use lab-specific normalization for movement features
+✓ Consider separate models or domain adaptation for AdaptableSnail
+✓ Power transformation (gamma=0.05) essential for skewed movement distributions
+✓ Angular features show significant lab-to-lab variation
+✓ Pixel density and FPS normalization critical for cross-lab generalization
