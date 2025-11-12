@@ -1,0 +1,212 @@
+Figures will be saved to: eda/figures
+Train shape: (8789, 38)
+Test shape: (1, 38)
+           lab_id  ...  tracking_method
+0  AdaptableSnail  ...       DeepLabCut
+1  AdaptableSnail  ...       DeepLabCut
+2  AdaptableSnail  ...       DeepLabCut
+3  AdaptableSnail  ...       DeepLabCut
+4  AdaptableSnail  ...       DeepLabCut
+
+[5 rows x 38 columns]
+           lab_id  ...  tracking_method
+0  AdaptableSnail  ...       DeepLabCut
+
+[1 rows x 38 columns]
+Train Info:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 8789 entries, 0 to 8788
+Data columns (total 38 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   lab_id              8789 non-null   object 
+ 1   video_id            8789 non-null   int64  
+ 2   mouse1_strain       8789 non-null   object 
+ 3   mouse1_color        8789 non-null   object 
+ 4   mouse1_sex          8779 non-null   object 
+ 5   mouse1_id           816 non-null    float64
+ 6   mouse1_age          8140 non-null   object 
+ 7   mouse1_condition    8229 non-null   object 
+ 8   mouse2_strain       8789 non-null   object 
+ 9   mouse2_color        8789 non-null   object 
+ 10  mouse2_sex          8742 non-null   object 
+ 11  mouse2_id           108 non-null    float64
+ 12  mouse2_age          8140 non-null   object 
+ 13  mouse2_condition    7991 non-null   object 
+ 14  mouse3_strain       7943 non-null   object 
+ 15  mouse3_color        7943 non-null   object 
+ 16  mouse3_sex          7943 non-null   object 
+ 17  mouse3_id           17 non-null     float64
+ 18  mouse3_age          7943 non-null   object 
+ 19  mouse3_condition    7933 non-null   object 
+ 20  mouse4_strain       10 non-null     object 
+ 21  mouse4_color        10 non-null     object 
+ 22  mouse4_sex          10 non-null     object 
+ 23  mouse4_id           10 non-null     float64
+ 24  mouse4_age          11 non-null     object 
+ 25  mouse4_condition    3 non-null      object 
+ 26  frames_per_second   8789 non-null   float64
+ 27  video_duration_sec  8789 non-null   float64
+ 28  pix_per_cm_approx   8789 non-null   float64
+ 29  video_width_pix     8789 non-null   int64  
+ 30  video_height_pix    8789 non-null   int64  
+ 31  arena_width_cm      8789 non-null   float64
+ 32  arena_height_cm     8789 non-null   float64
+ 33  arena_shape         8789 non-null   object 
+ 34  arena_type          8779 non-null   object 
+ 35  body_parts_tracked  8789 non-null   object 
+ 36  behaviors_labeled   848 non-null    object 
+ 37  tracking_method     8789 non-null   object 
+dtypes: float64(9), int64(3), object(26)
+memory usage: 2.5+ MB
+
+Test Info:
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 1 entries, 0 to 0
+Data columns (total 38 columns):
+ #   Column              Non-Null Count  Dtype  
+---  ------              --------------  -----  
+ 0   lab_id              1 non-null      object 
+ 1   video_id            1 non-null      int64  
+ 2   mouse1_strain       1 non-null      object 
+ 3   mouse1_color        1 non-null      object 
+ 4   mouse1_sex          1 non-null      object 
+ 5   mouse1_id           1 non-null      float64
+ 6   mouse1_age          1 non-null      object 
+ 7   mouse1_condition    1 non-null      object 
+ 8   mouse2_strain       1 non-null      object 
+ 9   mouse2_color        1 non-null      object 
+ 10  mouse2_sex          1 non-null      object 
+ 11  mouse2_id           1 non-null      float64
+ 12  mouse2_age          1 non-null      object 
+ 13  mouse2_condition    1 non-null      object 
+ 14  mouse3_strain       1 non-null      object 
+ 15  mouse3_color        1 non-null      object 
+ 16  mouse3_sex          1 non-null      object 
+ 17  mouse3_id           1 non-null      float64
+ 18  mouse3_age          1 non-null      object 
+ 19  mouse3_condition    1 non-null      object 
+ 20  mouse4_strain       1 non-null      object 
+ 21  mouse4_color        1 non-null      object 
+ 22  mouse4_sex          1 non-null      object 
+ 23  mouse4_id           1 non-null      float64
+ 24  mouse4_age          1 non-null      object 
+ 25  mouse4_condition    1 non-null      object 
+ 26  frames_per_second   1 non-null      float64
+ 27  video_duration_sec  1 non-null      float64
+ 28  pix_per_cm_approx   1 non-null      float64
+ 29  video_width_pix     1 non-null      int64  
+ 30  video_height_pix    1 non-null      int64  
+ 31  arena_width_cm      1 non-null      float64
+ 32  arena_height_cm     1 non-null      float64
+ 33  arena_shape         1 non-null      object 
+ 34  arena_type          1 non-null      object 
+ 35  body_parts_tracked  1 non-null      object 
+ 36  behaviors_labeled   1 non-null      object 
+ 37  tracking_method     1 non-null      object 
+dtypes: float64(9), int64(3), object(26)
+memory usage: 436.0+ bytes
+Missing values (train):
+mouse1_sex             10
+mouse1_id            7973
+mouse1_age            649
+mouse1_condition      560
+mouse2_sex             47
+mouse2_id            8681
+mouse2_age            649
+mouse2_condition      798
+mouse3_strain         846
+mouse3_color          846
+mouse3_sex            846
+mouse3_id            8772
+mouse3_age            846
+mouse3_condition      856
+mouse4_strain        8779
+mouse4_color         8779
+mouse4_sex           8779
+mouse4_id            8779
+mouse4_age           8778
+mouse4_condition     8786
+arena_type             10
+behaviors_labeled    7941
+dtype: int64
+Duplicated rows (train): 0
+Data types:
+object     26
+float64     9
+int64       3
+Name: count, dtype: int64
+Numeric summary:
+           video_id   mouse1_id  ...  arena_width_cm  arena_height_cm
+count  8.789000e+03  816.000000  ...     8789.000000      8789.000000
+mean   1.072697e+09   24.571078  ...       50.457856        49.299670
+std    6.209820e+08   22.444201  ...        7.580842        10.705873
+min    9.603000e+03    1.000000  ...       12.700000        12.000000
+25%    5.380940e+08    6.000000  ...       52.000000        52.000000
+50%    1.072003e+09   15.000000  ...       52.000000        52.000000
+75%    1.615401e+09   38.000000  ...       52.000000        52.000000
+max    2.147479e+09   80.000000  ...      120.000000       120.000000
+
+[8 rows x 12 columns]
+Categorical summary:
+                  lab_id  ... tracking_method
+count               8789  ...            8789
+unique                21  ...               4
+top     MABe22_keypoints  ...    custom HRnet
+freq                5320  ...            7926
+
+[4 rows x 26 columns]
+Example body parts tracked: ['body_center', 'ear_left', 'ear_right', 'headpiece_bottombackleft', 'headpiece_bottombackright', 'headpiece_bottomfrontleft', 'headpiece_bottomfrontright', 'headpiece_topbackleft', 'headpiece_topbackright', 'headpiece_topfrontleft', 'headpiece_topfrontright', 'lateral_left', 'lateral_right', 'neck', 'nose', 'tail_base', 'tail_midpoint', 'tail_tip']
+Example behaviors labeled: ['mouse1,mouse2,approach', 'mouse1,mouse2,attack', 'mouse1,mouse2,avoid', 'mouse1,mouse2,chase', 'mouse1,mouse2,chaseattack', 'mouse1,mouse2,submit', 'mouse1,mouse3,approach', 'mouse1,mouse3,attack', 'mouse1,mouse3,avoid', 'mouse1,mouse3,chase']
+Tracking shape: (140196, 5)
+   video_frame  mouse_id   bodypart    x    y
+0            0         1   ear_left  0.0  0.0
+1            0         1  ear_right  0.0  0.0
+2            0         1   hip_left  0.0  0.0
+3            0         1  hip_right  0.0  0.0
+4            0         1       neck  0.0  0.0
+Annotation shape: (48, 5)
+   agent_id  target_id action  start_frame  stop_frame
+0         1          2  sniff          108         115
+1         1          2  sniff          134         139
+2         1          2  sniff          295         299
+3         1          2  sniff          534         603
+4         1          2  sniff          616         675
+==== Data Quality Observations ====
+mouse1_sex             10
+mouse1_id            7973
+mouse1_age            649
+mouse1_condition      560
+mouse2_sex             47
+mouse2_id            8681
+mouse2_age            649
+mouse2_condition      798
+mouse3_strain         846
+mouse3_color          846
+mouse3_sex            846
+mouse3_id            8772
+mouse3_age            846
+mouse3_condition      856
+mouse4_strain        8779
+mouse4_color         8779
+mouse4_sex           8779
+mouse4_id            8779
+mouse4_age           8778
+mouse4_condition     8786
+arena_type             10
+behaviors_labeled    7941
+dtype: int64
+
+Consider imputing, dropping or flagging columns with >50% missingness.
+Zero variance columns: []
+==== Recommendations ====
+- Explore inter-mouse distances/relationships with tracking data.
+- Analyze temporal patterns in annotated behaviors.
+- Create transition matrices for behavioral states.
+- Investigate lab-specific protocols as possible confounders.
+- Engineer features from movement trajectories for behavior prediction/modeling.
+- Profile rare experimental conditions and stratify by arena/experiment metadata.
+Saved cleaned train data to eda/train_cleaned.csv.
+
+Comprehensive EDA complete.
+All figures saved to: /home/mingjia-guan/workspaces/MABe-2025/eda/figures
